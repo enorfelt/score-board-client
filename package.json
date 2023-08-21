@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "build:esp": "ng build --configuration=production-esp",
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +27,11 @@
     "@angular-devkit/build-angular": "^16.2.0",
     "@angular/cli": "~16.2.0",
     "@angular/compiler-cli": "^16.2.0",
+    "@testing-library/angular": "^14.3.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jasmine": "^4.3.5",
+    "jest": "^29.6.2",
+    "jest-environment-jsdom": "^29.6.2",
     "typescript": "~5.1.3"
   }
 }
