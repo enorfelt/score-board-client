@@ -84,7 +84,7 @@
               "sourceMap": true
             },
             "production-esp": {
-              "outputPath": "../score-board/src/www/"
+              "outputPath": "../score-board/data/"
             }
           },
           "defaultConfiguration": "production"
