@@ -1,6 +1,31 @@
 @import 'reset';
+@import 'fonts';
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
 
 body {
-    background-color: #c4c4c4;
-    color: #fff;
+  background-color: #c4c4c4;
+  color: #fff;
+}
+
+.section-label {
+  font-weight: 700; 
+  font-size: 3rem;
+  text-align: center;
+  color: #fff;
+  margin: 0;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+input.segment-display {
+  background-color: #000;
+  font-family: 'DSEG7-Classic';
+  color: #ffc400;
+  font-size: 100px;
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
 }

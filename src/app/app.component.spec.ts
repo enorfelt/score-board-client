@@ -2,8 +2,8 @@ import { AppComponent } from './app.component';
 import { render } from '@testing-library/angular';
 
 describe('AppComponent', () => {
-    it('should contain welcome message', async () => {
+    it('should contain innings', async () => {
         const component = await render(AppComponent);
-        expect(component.getByText('Welcome to score-board-client!')).toBeTruthy();
+        expect(component.getByText('Inning')).toBeTruthy();
     });
 });

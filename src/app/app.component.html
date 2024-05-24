@@ -1,35 +1,30 @@
 <div class="container">
-  <div class="score home">
-    <h1>Home</h1>
-    <div class="input-padding">
-      <input type="number" value="0" />
-    </div>
-    <div class="buttons">
-      <button>+</button>
-      <button>-</button>
-    </div>
-  </div>
+  <app-score title="Home"></app-score>
   <div class="inning-and-outes">
     <div class="inning">
-      <h1>Inning</h1>
-      <input type="number" value="0" />
-      <button>+</button>
-      <button>-</button>
+      <h1 class="section-label">Inning</h1>
+      <input class="segment-display" type="number" value="1" max="9" min="1" />
+      <div class="buttons">
+        <button>-</button>
+        <button>+</button>
+      </div>
     </div>
     <div class="outs">
-      <h1>Outs</h1>
-      <input type="number" value="0" />
-      <button>+</button>
-      <button>-</button>
+      <h1 class="section-label">Outs</h1>
+      <div class="inputs">
+        <label class="check-container">
+          <input type="checkbox" id="out1" name="out1" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="check-container">
+          <input type="checkbox" id="out2" name="out2" />
+          <span class="checkmark"></span>
+        </label>
+        <div class="buttons">
+          <button>-</button>
+          <button>+</button>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="score away">
-    <h1>Away</h1>
-    <div class="input-padding">
-      <input type="number" value="0" />
-    </div>
-    <div class="buttons">
-      <button>+</button>
-      <button>-</button>
-    </div>
-  </div>
+  <app-score title="Away"></app-score>

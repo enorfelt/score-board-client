@@ -1,8 +1,8 @@
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 10px;
-  max-width: 1180px;
+  max-width: 720px;
   background-color: #bc0001;
   border: 5px solid #000;
   border-radius: 3px;
@@ -10,55 +10,122 @@
   min-height: 600px;
 }
 
-h1 {
-  font-size: 3rem;
-  text-align: center;
-  color: #fff;
-  margin: 0;
-  padding: 10px;
+app-score {
+  flex-basis: 30%;
+  padding: 0 40px;
 }
 
-input {
-  background-color: #000;
-  color: #ffc400;
-  font-size: 100px;
-  width: 100%;
-  text-align: center;
-  border-radius: 5px;
+.section-label {
+  font-size: 40px;
 }
 
-.input-padding {
-  padding: 0 20px;
+button {
+  font-size: 50px;
 }
 
-.score {
+.inning-and-outes {
+  padding-top: 100px;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-content: flex-start;
-  flex-wrap: wrap;
-  padding: 0 20px;
+  flex-direction: column;
+  gap: 20px;
+}
 
-  h1 {
-    flex-basis: 100%;
-  }
+.inning {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  .input-padding {
-    flex-basis: 75%;
+  .segment-display {
+    width: 100px;
   }
 
   .buttons {
-    flex-basis: 25%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: nowrap;
     align-items: stretch;
 
     button {
-      flex-grow: 1;
-      font-size: 50px;
+      width: 50px;
       text-align: center;
       background-color: grey;
+    }
+  }
+}
+
+.outs {
+  .inputs {
+    border: 3px solid #fff;
+    border-radius: 40px;
+    justify-content: flex-start; 
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .check-container {
+      flex-basis: 50%;
+      display: block;
+      position: relative;
+      height: 35px;
+      max-width: 35px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        &:checked~.checkmark {
+          background-color: #000;
+
+          &:after {
+            display: block;
+          }
+        }
+      }
+
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 35px;
+        width: 35px;
+        background-color: #000;
+
+        &:after {
+          content: "";
+          position: absolute;
+          display: none;
+          left: 13px;
+          top: 8px;
+          width: 10px;
+          height: 15px;
+          border: solid white;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+
+      &:hover input~.checkmark {
+        background-color: #000;
+      }
+    }
+
+
+    .buttons {
+      flex-basis: 100%;
+      display: flex;
+
     }
   }
 }
