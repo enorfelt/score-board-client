@@ -98,10 +98,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "score-board-client:build:production"
+              "buildTarget": "score-board-client:build:production"
             },
             "development": {
-              "browserTarget": "score-board-client:build:development"
+              "buildTarget": "score-board-client:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -109,7 +109,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "score-board-client:build"
+            "buildTarget": "score-board-client:build"
           }
         },
         "test": {
