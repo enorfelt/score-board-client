@@ -62,6 +62,9 @@
               }
             ],
             "styles": [
+              "src/normalize.css",
+              "purecss/build/pure-min.css",
+              "purecss/build/grids-responsive-min.css",
               "src/styles.scss"
             ],
             "scripts": [],
