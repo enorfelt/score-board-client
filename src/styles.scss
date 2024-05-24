@@ -1,6 +1,12 @@
 @import 'reset';
 @import 'fonts';
 
+:root {
+  --primary-color: #bc0001;
+  --secondary-color: #000;
+  --tertiary-color: #fff;
+}
+
 html {
   font-family: 'Roboto', sans-serif;
 }

@@ -49,7 +49,6 @@
             },
             "index": "src/index.html",
             "polyfills": [
-              "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",

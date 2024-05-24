@@ -3,7 +3,7 @@
   justify-content: space-between;
   gap: 10px;
   max-width: 720px;
-  background-color: #bc0001;
+  background-color: var(--primary-color);
   border: 5px solid #000;
   border-radius: 3px;
   margin: 10px auto;
@@ -48,7 +48,6 @@ button {
     button {
       width: 50px;
       text-align: center;
-      background-color: grey;
     }
   }
 }
@@ -57,11 +56,13 @@ button {
   .inputs {
     border: 3px solid #fff;
     border-radius: 40px;
-    justify-content: flex-start; 
+    justify-content: space-evenly; 
 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
+    padding: 20px 0 10px 0;
 
     .check-container {
       flex-basis: 50%;
@@ -125,7 +126,12 @@ button {
     .buttons {
       flex-basis: 100%;
       display: flex;
-
+      justify-content: space-evenly;
+      
+      button {
+        width: 35px;
+        text-align: center;
+      }
     }
   }
 }
