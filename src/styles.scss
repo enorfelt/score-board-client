@@ -4,6 +4,11 @@
   --primary-color: #bc0001;
   --secondary-color: #000;
   --tertiary-color: #fff;
+
+  --font-color: #2c2c2c;
+  --bg-color: #c3c3c3;
+
+  --segment-color: #ffc400;
 }
 
 html {
@@ -11,8 +16,8 @@ html {
 }
 
 body {
-  background-color: #c4c4c4;
-  color: #fff;
+  background-color: var(--bg-color);
+  color: var(--font-color);
 }
 
 .section-container {
@@ -22,21 +27,36 @@ body {
 }
 
 .section-label {
-  font-weight: 700; 
-  font-size: 3rem;
+  font-weight: 700;
+  font-size: 2rem;
   text-align: center;
-  color: #fff;
   margin: 0;
-  padding: 10px;
+  padding: 5px;
   text-transform: uppercase;
+}
+
+.section-border {
+  border: 3px solid #fff;
+  border-radius: 12px;
+  padding: 10px;
 }
 
 input.segment-display {
   background-color: #000;
   font-family: 'DSEG7-Classic';
-  color: #ffc400;
+  color: var(--segment-color);
   font-size: 100px;
   width: 100%;
   text-align: center;
   border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.board-button {
+  display: inline;
+  width: 50%;
+}
+
+.button-xlarge {
+  font-size: 125%;
 }
