@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "build:esp": "ng build --configuration=production-esp",
-    "test": "ng test"
+    "test": "jest"
   },
   "private": true,
   "dependencies": {
@@ -22,8 +22,7 @@
     "dseg": "^0.46.0",
     "purecss": "^3.0.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.14.6"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.0.1",
@@ -32,9 +31,16 @@
     "@testing-library/angular": "^16.0.0",
     "@testing-library/jest-dom": "^6.1.2",
     "@testing-library/user-event": "^14.4.3",
-    "@types/jasmine": "^5.1.4",
-    "jest": "^29.6.2",
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.6.2",
+    "jest-preset-angular": "^14.1.0",
     "typescript": "~5.4.5"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setup-jest.ts"
+    ]
   }
 }
