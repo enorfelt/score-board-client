@@ -1,8 +1,8 @@
 <div class="container">
   <div class="pure-g">
     <app-section class="pure-u-1 pure-u-sm-1-3" title="Home">
-      <app-segment-display></app-segment-display>
-      <app-inc-dec-buttons></app-inc-dec-buttons>
+      <app-segment-display [value]="homeScoreSig()"></app-segment-display>
+      <app-inc-dec-buttons (scoreIncreased)="homeScoreIncreased()"></app-inc-dec-buttons>
     </app-section>
     <div class="pure-u-1 pure-u-sm-1-3">
       <app-section title="Innings">
