@@ -2,10 +2,12 @@
   <div class="pure-g">
     <app-section class="pure-u-1 pure-u-sm-1-3" title="Home">
       <app-segment-display></app-segment-display>
+      <app-inc-dec-buttons></app-inc-dec-buttons>
     </app-section>
     <div class="pure-u-1 pure-u-sm-1-3">
       <app-section title="Innings">
         <app-segment-display [value]="1"></app-segment-display>
+        <app-inc-dec-buttons></app-inc-dec-buttons>
       </app-section>
       <app-section title="Outs" class="outs">
         <div class="pure-g">
@@ -20,16 +22,14 @@
             </label>
           </div>
           <div class="pure-u-1">
-            <div class="pure-button-group" role="group" aria-label="Outs">
-              <button class="button-xlarge pure-button board-button">-</button>
-              <button class="button-xlarge pure-button board-button">+</button>
-            </div>
+            <app-inc-dec-buttons></app-inc-dec-buttons>
           </div>
         </div>
       </app-section>
     </div>
     <app-section class="pure-u-1 pure-u-sm-1-3" title="Away">
       <app-segment-display></app-segment-display>
+      <app-inc-dec-buttons></app-inc-dec-buttons>
     </app-section>
   </div>
 </div>
