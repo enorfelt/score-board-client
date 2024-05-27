@@ -5,8 +5,8 @@
       <input class="segment-display" type="text" [(ngModel)]="score" disabled />
     </div>
     <div class="pure-button-group" role="group" aria-label="Score">
-      <button class="button-xlarge pure-button board-button" role="button">-</button>
-      <button class="button-xlarge pure-button board-button" role="button">+</button>
+      <button class="button-xlarge pure-button board-button" role="button" (click)="decreaseScore()">-</button>
+      <button class="button-xlarge pure-button board-button" role="button" (click)="increaseScore()">+</button>
     </div>
   </div>
 </div>

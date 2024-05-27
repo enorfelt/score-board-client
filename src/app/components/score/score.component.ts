@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, importProvidersFrom, input, model } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input, importProvidersFrom, input, model, output } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 
 @Component({
@@ -12,5 +12,14 @@ import { FormsModule } from "@angular/forms";
 export class ScoreComponent {
   title = input<string>('');
   score = model<number>(0);
+  scoreIncreased = output();
+  scoreDecreased = output();
 
+  increaseScore(): void {
+    this.scoreIncreased.emit();
+  }
+
+  decreaseScore(): void {
+    this.scoreDecreased.emit();
+  }
 }
