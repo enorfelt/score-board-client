@@ -1,20 +1,14 @@
 <div class="container">
   <div class="pure-g">
-    <app-score title="Home" class="pure-u-1 pure-u-sm-1-3"></app-score>
+    <app-section class="pure-u-1 pure-u-sm-1-3" title="Home">
+      <app-segment-display></app-segment-display>
+    </app-section>
     <div class="pure-u-1 pure-u-sm-1-3">
-      <div class="section-container">
-        <h1 class="section-label">Inning</h1>
-        <div class="section-border">
-          <input class="segment-display" type="text" value="1" disabled />
-          <div class="pure-button-group" role="group" aria-label="Innings">
-            <button class="button-xlarge pure-button board-button">-</button>
-            <button class="button-xlarge pure-button board-button">+</button>
-          </div>
-        </div>
-      </div>
-      <div class="section-container outs">
-        <h1 class="section-label">Outs</h1>
-        <div class="pure-g section-border">
+      <app-section title="Innings">
+        <app-segment-display [value]="1"></app-segment-display>
+      </app-section>
+      <app-section title="Outs" class="outs">
+        <div class="pure-g">
           <div class="pure-u-1 check-wrapper">
             <label class="check-container">
               <input type="checkbox" id="out1" name="out1" disabled />
@@ -32,8 +26,10 @@
             </div>
           </div>
         </div>
-      </div>
+      </app-section>
     </div>
-    <app-score title="Away" class="pure-u-1 pure-u-sm-1-3"></app-score>
+    <app-section class="pure-u-1 pure-u-sm-1-3" title="Away">
+      <app-segment-display></app-segment-display>
+    </app-section>
   </div>
 </div>
