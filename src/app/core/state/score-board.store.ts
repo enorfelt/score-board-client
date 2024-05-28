@@ -1,4 +1,4 @@
-import { Inject, Injectable, InjectionToken, signal, Optional, Provider } from "@angular/core";
+import { Inject, Injectable, InjectionToken, signal, Provider } from "@angular/core";
 import { ScoreBoardState } from "./score-board.state";
 
 export const SCORE_BOARD_INITIAL_STATE = new InjectionToken('SCORE_BOARD_INITIAL_STATE');
