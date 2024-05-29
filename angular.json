@@ -120,7 +120,8 @@
               "buildTarget": "score-board-client:build:production"
             },
             "development": {
-              "buildTarget": "score-board-client:build:development"
+              "buildTarget": "score-board-client:build:development",
+              "proxyConfig": "./proxy.conf.js"
             }
           },
           "defaultConfiguration": "development"
