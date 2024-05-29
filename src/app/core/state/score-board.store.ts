@@ -1,18 +1,19 @@
-import { Inject, Injectable, InjectionToken, signal, Provider, inject, DestroyRef } from "@angular/core";
+import { Injectable, signal, inject, DestroyRef } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ScoreBoardState } from "./score-board.state";
 import { ScoreBoardService } from "./score-board.service";
+import { AppConfigService } from '../';
 
-export const SCORE_BOARD_INITIAL_STATE = new InjectionToken('SCORE_BOARD_INITIAL_STATE');
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ScoreBoardStore {
   private service = inject(ScoreBoardService);
+  private config = inject(AppConfigService);
   private destroyRef = inject(DestroyRef);
 
-  readonly state = signal<ScoreBoardState>(this.initialState);
-
-  constructor(@Inject(SCORE_BOARD_INITIAL_STATE) private initialState: ScoreBoardState) { }
+  private readonly writableState = signal<ScoreBoardState>(this.config.initialState);
+  readonly state = this.writableState.asReadonly();
 
   homeScores() {
     this.update(s => ({ home: Math.min(99, s.home + 1) }));
@@ -31,29 +32,29 @@ export class ScoreBoardStore {
   }
 
   addOut() {
-    this.update(s => ({ 
+    this.update(s => ({
       outsInInning: s.outsInInning < 5 ? s.outsInInning + 1 : 0,
       inning: s.outsInInning === 5 ? Math.min(99, s.inning + 1) : s.inning
     }));
   }
 
   removeOut() {
-    this.update(s => ({ 
+    this.update(s => ({
       outsInInning: s.outsInInning > 0 ? s.outsInInning - 1 : 0,
       inning: s.outsInInning === 0 ? Math.max(1, s.inning - 1) : s.inning
     }));
   }
 
   addInning() {
-    this.update(s => ({ 
+    this.update(s => ({
       inning: Math.min(99, s.inning + 1),
       outsInInning: s.inning < 99 ? 0 : s.outsInInning,
     }));
   }
 
   removeInning() {
-    this.update(s => ({ 
-      inning: Math.max(1, s.inning - 1), 
+    this.update(s => ({
+      inning: Math.max(1, s.inning - 1),
       outsInInning: s.inning > 1 ? 0 : s.outsInInning,
     }));
   }
@@ -65,18 +66,7 @@ export class ScoreBoardStore {
       .pipe(
         takeUntilDestroyed(this.destroyRef)
       )
-      .subscribe(s => this.state.set(s));
+      .subscribe(s => this.writableState.set(s));
   }
 
-}
-
-export function initializeScoreBoardStore(
-  initialState: ScoreBoardState
-): Provider[] {
-  return [
-    {
-      provide: ScoreBoardStore,
-      useFactory: () => new ScoreBoardStore(initialState),
-    }
-  ]
 }

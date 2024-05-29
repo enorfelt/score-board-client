@@ -1,10 +1,12 @@
 import { TestBed } from "@angular/core/testing";
-import { ScoreBoardState, initialState } from "./score-board.state";
-import { SCORE_BOARD_INITIAL_STATE, ScoreBoardStore } from "./score-board.store";
+import { ScoreBoardState } from "./score-board.state";
+import { ScoreBoardStore } from "./score-board.store";
 import { ScoreBoardService } from "./score-board.service";
 import { of } from "rxjs";
+import { AppConfigService, defaultState } from "../config/app-config.service";
 
 describe('ScoreBoardStore', () => {
+  const initialState = defaultState;
   it('should have initial state', () => {
     expect(createStore().store.state()).toEqual(initialState);
   });
@@ -150,24 +152,28 @@ describe('ScoreBoardStore', () => {
 
   const createStore = (partialState?: Partial<ScoreBoardState>) => {
     const state = { ...initialState, ...partialState };
-    const serviceMock = {
+    const scoreBoardServiceMock = {
       load: jest.fn().mockImplementation(() => of(state)),
       update: jest.fn().mockImplementation(state => of(state))
+    };
+
+    const appConfigServiceMock = {
+      initialState: state
     };
 
     TestBed.configureTestingModule({
       providers: [
         ScoreBoardStore,
         {
-          provide: SCORE_BOARD_INITIAL_STATE,
-          useValue: state,
+          provide: AppConfigService,
+          useValue: appConfigServiceMock
         },
         {
           provide: ScoreBoardService,
-          useValue: serviceMock
+          useValue: scoreBoardServiceMock
         }
       ]
     });
-    return { store: TestBed.inject(ScoreBoardStore), service: serviceMock };
+    return { store: TestBed.inject(ScoreBoardStore), service: scoreBoardServiceMock };
   };
 });

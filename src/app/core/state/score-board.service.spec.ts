@@ -3,9 +3,10 @@ import { HttpTestingController, provideHttpClientTesting } from "@angular/common
 import { ScoreBoardService } from "./score-board.service";
 import { provideHttpClient } from "@angular/common/http";
 import { subscribeSpyTo } from "@hirez_io/observer-spy";
-import { initialState } from "./score-board.state";
+import { defaultState } from "../config/app-config.service";
 
 describe('ScoreBoardService', () => {
+  const initialState = defaultState;
   it('should be created', () => {
     const { service } = createService();
     expect(service).toBeTruthy();
