@@ -11,14 +11,4 @@ import { FormsModule } from "@angular/forms";
 })
 export class SegmentDisplayComponent {
   value = model<number>(0);
-  scoreIncreased = output();
-  scoreDecreased = output();
-
-  increaseScore(): void {
-    this.scoreIncreased.emit();
-  }
-
-  decreaseScore(): void {
-    this.scoreDecreased.emit();
-  }
 }

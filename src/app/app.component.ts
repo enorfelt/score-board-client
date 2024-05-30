@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { IncDecButtonsComponent, SectionComponent, SegmentDisplayComponent } from './components';
+import { AddRemoveButtonsComponent, SectionComponent, SegmentDisplayComponent } from './components';
 import { ScoreBoardStore } from './core';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SectionComponent, SegmentDisplayComponent, IncDecButtonsComponent],
+  imports: [CommonModule, RouterOutlet, SectionComponent, SegmentDisplayComponent, AddRemoveButtonsComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

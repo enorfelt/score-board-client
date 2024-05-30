@@ -1,22 +1,22 @@
 import { ChangeDetectionStrategy, Component, output } from "@angular/core";
 
 @Component({
-  selector: 'app-inc-dec-buttons',
+  selector: 'app-add-remove-buttons',
   templateUrl: './inc-dec-buttons.component.html',
   styleUrls: ['./inc-dec-buttons.component.scss'],
   standalone: true,
   imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IncDecButtonsComponent {
-  scoreIncreased = output();
-  scoreDecreased = output();
+export class AddRemoveButtonsComponent {
+  valueAdded = output();
+  valueRemoved = output();
 
-  increaseScore(): void {
-    this.scoreIncreased.emit();
+  addValue(): void {
+    this.valueAdded.emit();
   }
 
-  decreaseScore(): void {
-    this.scoreDecreased.emit();
+  removeValue(): void {
+    this.valueRemoved.emit();
   }
 }
