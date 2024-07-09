@@ -2,6 +2,18 @@
   max-width: 920px;
   margin-left: auto;
   margin-right: auto;
+  min-height: 430px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  border: 5px solid rgba(0, 0, 0, 0.56);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+@media screen and (min-width: 920px) {
+  .container {
+    margin-top: 5px;
+  }
 }
 
 .check-wrapper {

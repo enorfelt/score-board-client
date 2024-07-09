@@ -1,12 +1,12 @@
 @import 'fonts';
 
 :root {
-  --primary-color: #bc0001;
-  --secondary-color: #000;
-  --tertiary-color: #fff;
+  --primary-color: hsla(0, 100%, 30%, 1);
+  --primary-color-dark: hsla(0, 100%, 18%, 1);
 
-  --font-color: #2c2c2c;
-  --bg-color: #c3c3c3;
+  --light-color: hsla(0, 0%, 85%, 1);
+  --bg-color: hsla(0, 0%, 100%, 1);
+  --bg-color-dark: hsla(0, 0%, 70%, 1);
 
   --segment-color: #ffc400;
 }
@@ -16,6 +16,6 @@ html {
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--font-color);
+  background-color: var(--primary-color-dark);
+  color: var(--light-color);
 }
