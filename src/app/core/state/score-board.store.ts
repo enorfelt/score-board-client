@@ -3,6 +3,7 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ScoreBoardState } from "./score-board.state";
 import { ScoreBoardService } from "./score-board.service";
 import { AppConfigService } from '../';
+import { BehaviorSubject, catchError, delay, iif, of, switchMap, tap } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,14 @@ export class ScoreBoardStore {
   private service = inject(ScoreBoardService);
   private config = inject(AppConfigService);
   private destroyRef = inject(DestroyRef);
+
+  loading$ = new BehaviorSubject<boolean>(false);
+  delayedLoading$ = this.loading$.pipe(
+    switchMap((loading) => 
+      iif(() => loading, 
+        of(loading)
+          .pipe(delay(100)),
+        of(loading))));
 
   private readonly writableState = signal<ScoreBoardState>(this.config.initialState);
   readonly state = this.writableState.asReadonly();
@@ -60,11 +69,17 @@ export class ScoreBoardStore {
   }
 
   private update(newState: (state: ScoreBoardState) => Partial<ScoreBoardState>) {
+    this.loading$.next(true);
     const currentState = this.state();
     this.service
       .update({ ...currentState, ...newState(currentState) })
       .pipe(
-        takeUntilDestroyed(this.destroyRef)
+        takeUntilDestroyed(this.destroyRef),
+        tap(() => this.loading$.next(false)),
+        catchError(() => {
+          this.loading$.next(false);
+          return [];
+        })
       )
       .subscribe(s => this.writableState.set(s));
   }

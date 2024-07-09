@@ -1,19 +1,22 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { AddRemoveButtonsComponent, SectionComponent, SegmentDisplayComponent } from './components';
+import { AddRemoveButtonsComponent, SectionComponent, SegmentDisplayComponent, SpinnerComponent } from './components';
 import { ScoreBoardStore } from './core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SectionComponent, SegmentDisplayComponent, AddRemoveButtonsComponent],
+  imports: [CommonModule, RouterOutlet, SectionComponent, SegmentDisplayComponent, AddRemoveButtonsComponent, SpinnerComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   private store = inject(ScoreBoardStore);
+
+  loading = toSignal(this.store.delayedLoading$);
 
   homeScoreSig = computed(() => this.store.state().home);
   awayScoreSig = computed(() => this.store.state().away);

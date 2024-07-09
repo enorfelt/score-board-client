@@ -1,13 +1,18 @@
+@if (loading()) {
+  <app-spinner></app-spinner>
+}
 <div class="container">
   <div class="pure-g">
     <app-section class="pure-u-1 pure-u-sm-1-3" title="Home">
       <app-segment-display [value]="homeScoreSig()"></app-segment-display>
-      <app-add-remove-buttons (valueAdded)="homeScoreIncreased()" (valueRemoved)="homeScoreDecreased()"></app-add-remove-buttons>
+      <app-add-remove-buttons (valueAdded)="homeScoreIncreased()"
+        (valueRemoved)="homeScoreDecreased()"></app-add-remove-buttons>
     </app-section>
     <div class="pure-u-1 pure-u-sm-1-3">
       <app-section title="Innings">
         <app-segment-display [value]="inningsSig()"></app-segment-display>
-        <app-add-remove-buttons (valueAdded)="inningIncreased()" (valueRemoved)="inningDecreased()"></app-add-remove-buttons>
+        <app-add-remove-buttons (valueAdded)="inningIncreased()"
+          (valueRemoved)="inningDecreased()"></app-add-remove-buttons>
       </app-section>
       <app-section title="Outs" class="outs">
         <div class="pure-g">
@@ -22,14 +27,16 @@
             </label>
           </div>
           <div class="pure-u-1">
-            <app-add-remove-buttons  (valueAdded)="outIncreased()" (valueRemoved)="outDecreased()"></app-add-remove-buttons>
+            <app-add-remove-buttons (valueAdded)="outIncreased()"
+              (valueRemoved)="outDecreased()"></app-add-remove-buttons>
           </div>
         </div>
       </app-section>
     </div>
     <app-section class="pure-u-1 pure-u-sm-1-3" title="Away">
       <app-segment-display [value]="awayScoreSig()"></app-segment-display>
-      <app-add-remove-buttons (valueAdded)="awayScoreIncreased()" (valueRemoved)="awayScoreDecreased()"></app-add-remove-buttons>
+      <app-add-remove-buttons (valueAdded)="awayScoreIncreased()"
+        (valueRemoved)="awayScoreDecreased()"></app-add-remove-buttons>
     </app-section>
   </div>
 </div>
