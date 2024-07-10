@@ -22,7 +22,7 @@ export class UiService {
     this.loadingSubject.next(isLoading);
   }
 
-  error(message: { error: string; message: string; }) {
-    this.errorSubject.next(message);
+  error(e: { error: string; message: string; }) {
+    this.errorSubject.next(e);
   }
 }

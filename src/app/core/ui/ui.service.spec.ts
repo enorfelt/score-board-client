@@ -31,8 +31,10 @@ describe('UiService', () => {
     const service = new UiService();
     const spy = subscribeSpyTo(service.error$);
 
-    service.error('error message');
+    const error = '500';
+    const message = 'error message';
+    service.error({ error, message });
 
-    expect(spy.getValues()).toEqual(['error message']) 
+    expect(spy.getValues()).toEqual([{ error, message }]) 
   });
 });
