@@ -4,6 +4,7 @@ import { routes } from './app.routes';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { provideAppConfig } from './core'
 import { loaderInterceptor } from './core/ui/loader.interceptor';
+import { httpErrorInterceptor } from './core/ui/error.interceptor';
 
 
 export const appConfig: ApplicationConfig = {
@@ -11,7 +12,7 @@ export const appConfig: ApplicationConfig = {
     provideExperimentalZonelessChangeDetection(),
     provideHttpClient(
       withFetch(),
-      withInterceptors([loaderInterceptor])
+      withInterceptors([loaderInterceptor, httpErrorInterceptor])
     ),
     provideRouter(routes),
     provideAppConfig(),

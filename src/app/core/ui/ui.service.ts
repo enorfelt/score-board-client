@@ -6,7 +6,7 @@ import { BehaviorSubject, delay, filter, iif, of, switchMap } from "rxjs";
 })
 export class UiService {
   private loadingSubject = new BehaviorSubject<boolean>(false);
-  private errorSubject = new BehaviorSubject<string | null>(null);
+  private errorSubject = new BehaviorSubject<{ error: string; message: string; } | null>(null);
   loading$ = this.loadingSubject.asObservable();
   error$ = this.errorSubject.asObservable()
     .pipe(filter((error) => error !== null));
@@ -22,7 +22,7 @@ export class UiService {
     this.loadingSubject.next(isLoading);
   }
 
-  error(message: string) {
+  error(message: { error: string; message: string; }) {
     this.errorSubject.next(message);
   }
 }

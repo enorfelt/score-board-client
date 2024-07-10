@@ -1,0 +1,11 @@
+<dialog #dialog data-testid="error-dialog">
+  <header>
+    <h2>{{ error()?.error }}</h2>
+  </header>
+  <section>
+    <p>{{ error()?.message }}</p>
+  </section>
+  <footer>
+    <button class="pure-button" role="button" (click)="close()" data-testid="close-button">Close</button>
+  </footer>
+</dialog>
