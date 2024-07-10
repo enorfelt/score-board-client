@@ -26,4 +26,13 @@ describe('UiService', () => {
 
     jest.useRealTimers();
   });
+
+  it('should set error', () => {
+    const service = new UiService();
+    const spy = subscribeSpyTo(service.error$);
+
+    service.error('error message');
+
+    expect(spy.getValues()).toEqual(['error message']) 
+  });
 });

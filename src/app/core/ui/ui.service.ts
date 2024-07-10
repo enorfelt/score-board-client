@@ -1,12 +1,15 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, delay, iif, of, switchMap } from "rxjs";
+import { BehaviorSubject, delay, filter, iif, of, switchMap } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UiService {
   private loadingSubject = new BehaviorSubject<boolean>(false);
+  private errorSubject = new BehaviorSubject<string | null>(null);
   loading$ = this.loadingSubject.asObservable();
+  error$ = this.errorSubject.asObservable()
+    .pipe(filter((error) => error !== null));
 
   delayedLoading$ = this.loading$.pipe(
     switchMap((loading) => 
@@ -17,5 +20,9 @@ export class UiService {
 
   loading(isLoading: boolean) {
     this.loadingSubject.next(isLoading);
+  }
+
+  error(message: string) {
+    this.errorSubject.next(message);
   }
 }
