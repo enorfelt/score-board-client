@@ -1,4 +1,3 @@
 {
-  "jest.jestCommandLine": "npm test",
-  "jest.autoRun": "off"
+  "jest.runMode": "on-demand"
 }
