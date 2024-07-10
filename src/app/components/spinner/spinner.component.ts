@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
+import { UiService } from "../../core";
+import { toSignal } from "@angular/core/rxjs-interop";
 
 @Component({
   selector: "app-spinner",
@@ -7,4 +9,8 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SpinnerComponent {}
+export class SpinnerComponent {
+  private uiService = inject(UiService);
+
+  isLoading = toSignal(this.uiService.delayedLoading$)
+}

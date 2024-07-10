@@ -1,20 +1,16 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpRequest } from "@angular/common/http";
+import { inject } from "@angular/core";
 import { UiService } from "./ui.service";
 import { Observable, catchError, finalize, throwError } from "rxjs";
 
-@Injectable()
-export class LoaderInterceptor implements HttpInterceptor {
-  constructor(private uiService: UiService) {}
-
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.uiService.loading(true);
-    return next.handle(req).pipe(
-      finalize(() => this.uiService.loading(false)),
-      catchError((error: HttpErrorResponse) => {
-        this.uiService.loading(false);
-        return throwError(() => error);
-      })
-    );
-  }
+export function loaderInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
+  const uiService = inject(UiService);
+  uiService.loading(true);
+  return next(req).pipe(
+    finalize(() => uiService.loading(false)),
+    catchError((error: HttpErrorResponse) => {
+      uiService.loading(false);
+      return throwError(() => error);
+    })
+  );
 }

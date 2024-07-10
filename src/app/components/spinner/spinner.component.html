@@ -1,1 +1,5 @@
-<span class="spinner" data-testid="spinner"></span>
+@if (isLoading()) {
+  <div class="spinner-container">
+    <span class="spinner" data-testid="spinner"></span>
+  </div>
+}

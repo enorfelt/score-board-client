@@ -1,5 +1,10 @@
 
-:host {
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.spinner-container {
   width: 100%;
   top: 0;
   bottom: 0;
@@ -9,6 +14,7 @@
   justify-content: center;
   z-index: 1;
   background-color: hsla(0%, 0%, 0%, 50%);
+  animation: fadeIn 0.1s;
 }
 
 .spinner {

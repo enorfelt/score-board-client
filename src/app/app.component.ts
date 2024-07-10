@@ -16,8 +16,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
 export class AppComponent {
   private store = inject(ScoreBoardStore);
 
-  loading = toSignal(this.store.delayedLoading$);
-
   homeScoreSig = computed(() => this.store.state().home);
   awayScoreSig = computed(() => this.store.state().away);
   inningsSig = computed(() => this.store.state().inning);

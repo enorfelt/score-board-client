@@ -13,14 +13,6 @@ export class ScoreBoardStore {
   private config = inject(AppConfigService);
   private destroyRef = inject(DestroyRef);
 
-  loading$ = new BehaviorSubject<boolean>(false);
-  delayedLoading$ = this.loading$.pipe(
-    switchMap((loading) => 
-      iif(() => loading, 
-        of(loading)
-          .pipe(delay(100)),
-        of(loading))));
-
   private readonly writableState = signal<ScoreBoardState>(this.config.initialState);
   readonly state = this.writableState.asReadonly();
 
@@ -69,17 +61,11 @@ export class ScoreBoardStore {
   }
 
   private update(newState: (state: ScoreBoardState) => Partial<ScoreBoardState>) {
-    this.loading$.next(true);
     const currentState = this.state();
     this.service
       .update({ ...currentState, ...newState(currentState) })
       .pipe(
         takeUntilDestroyed(this.destroyRef),
-        tap(() => this.loading$.next(false)),
-        catchError(() => {
-          this.loading$.next(false);
-          return [];
-        })
       )
       .subscribe(s => this.writableState.set(s));
   }
