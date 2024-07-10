@@ -3,7 +3,7 @@ import { AppComponent } from './app.component';
 import { render, screen, within } from '@testing-library/angular';
 import { Matcher } from "@testing-library/dom";
 import userEvent from '@testing-library/user-event';
-import { ScoreBoardState } from './core/state/score-board.state';
+import { ScoreBoardState } from './core/state/score-board.types';
 import { signal } from '@angular/core';
 import { ScoreBoardStore } from './core/state/score-board.store';
 import { defaultState } from './core/config/app-config.service';

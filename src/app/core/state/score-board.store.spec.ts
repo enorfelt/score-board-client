@@ -1,5 +1,5 @@
 import { TestBed } from "@angular/core/testing";
-import { ScoreBoardState } from "./score-board.state";
+import { ScoreBoardState } from "./score-board.types";
 import { ScoreBoardStore } from "./score-board.store";
 import { ScoreBoardService } from "./score-board.service";
 import { of } from "rxjs";

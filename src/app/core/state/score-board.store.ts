@@ -1,6 +1,6 @@
 import { Injectable, signal, inject, DestroyRef } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { ScoreBoardState } from "./score-board.state";
+import { ScoreBoardState } from "./score-board.types";
 import { ScoreBoardService } from "./score-board.service";
 import { AppConfigService } from "../config/app-config.service";
 

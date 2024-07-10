@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { ScoreBoardService } from '../state/score-board.service';
 import { take, tap } from 'rxjs';
-import { ScoreBoardState } from '../state/score-board.state';
+import { ScoreBoardState } from '../state/score-board.types';
 
 export const defaultState: ScoreBoardState = {
   home: 0,

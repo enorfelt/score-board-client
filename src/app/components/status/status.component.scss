@@ -1,0 +1,15 @@
+.status-indicator {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  background-color: var(--status-not-ready-color);
+  box-shadow: 0 0 10px var(--status-not-ready-color), 0 0 20px var(--status-not-ready-color), 0 0 30px var(--status-not-ready-color), 0 0 40px var(--status-not-ready-color);
+
+  &.ready {
+    background-color: var(--status-ready-color);
+    box-shadow: 0 0 10px var(--status-ready-color), 0 0 20px var(--status-ready-color), 0 0 30px var(--status-ready-color), 0 0 40px var(--status-ready-color);
+  }
+}

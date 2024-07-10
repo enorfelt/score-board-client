@@ -3,7 +3,7 @@ import { AppConfigService, defaultState } from "./app-config.service";
 import { ScoreBoardService } from "../state/score-board.service";
 import { subscribeSpyTo } from "@hirez_io/observer-spy";
 import { of } from "rxjs";
-import { ScoreBoardState } from "../state/score-board.state";
+import { ScoreBoardState } from "../state/score-board.types";
 
 describe('AppConfigService', () => {
   it('should be created', () => {

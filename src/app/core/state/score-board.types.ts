@@ -4,3 +4,7 @@ export type ScoreBoardState = {
   inning: number;
   outsInInning: number;
 };
+
+export type ScoreBoardStatus = {
+  isReady: boolean;
+}
