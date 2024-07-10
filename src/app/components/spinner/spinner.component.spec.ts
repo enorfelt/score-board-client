@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/angular";
 import { SpinnerComponent } from "./spinner.component";
-import { UiService } from "../../core";
+import { UiService } from "../../core/ui/ui.service";
 import { BehaviorSubject } from "rxjs";
 
 describe('SpinnerComponent', () => {

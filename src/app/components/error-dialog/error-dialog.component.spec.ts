@@ -1,6 +1,6 @@
-import { render, screen, waitFor, waitForElementToBeRemoved } from "@testing-library/angular";
-import { UiService } from "../../core";
-import { BehaviorSubject, Subject, of } from "rxjs";
+import { render, screen, waitFor } from "@testing-library/angular";
+import { UiService } from "../../core/ui/ui.service";
+import { of } from "rxjs";
 import { ErrorDialogComponent } from "./error-dialog.componet";
 import userEvent from "@testing-library/user-event";
 
