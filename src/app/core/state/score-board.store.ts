@@ -2,8 +2,7 @@ import { Injectable, signal, inject, DestroyRef } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ScoreBoardState } from "./score-board.state";
 import { ScoreBoardService } from "./score-board.service";
-import { AppConfigService } from '../';
-import { BehaviorSubject, catchError, delay, iif, of, switchMap, tap } from "rxjs";
+import { AppConfigService } from "../config/app-config.service";
 
 @Injectable({
   providedIn: 'root'

@@ -2,7 +2,7 @@ import { ApplicationConfig, provideExperimentalZonelessChangeDetection } from '@
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
-import { provideAppConfig } from './core'
+import { provideAppConfig } from './core/config/app-config.provider'
 import { loaderInterceptor } from './core/ui/loader.interceptor';
 import { httpErrorInterceptor } from './core/ui/error.interceptor';
 

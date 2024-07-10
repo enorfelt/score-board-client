@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
-import { UiService } from "../../core";
+import { UiService } from "../../core/ui/ui.service";
 import { toSignal } from "@angular/core/rxjs-interop";
 
 @Component({

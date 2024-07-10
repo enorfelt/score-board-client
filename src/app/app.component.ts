@@ -1,9 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { AddRemoveButtonsComponent, SectionComponent, SegmentDisplayComponent, SpinnerComponent, ErrorDialogComponent } from './components';
-import { ScoreBoardStore } from './core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { SectionComponent } from './components/section/section.component';
+import { ErrorDialogComponent } from './components/error-dialog/error-dialog.componet';
+import { AddRemoveButtonsComponent } from './components/inc-dec-buttons/inc-dec-buttons.component';
+import { SegmentDisplayComponent } from './components/segment-display/segment-display.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ScoreBoardStore } from './core/state/score-board.store';
 
 @Component({
   selector: 'app-root',

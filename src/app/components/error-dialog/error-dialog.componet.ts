@@ -1,6 +1,6 @@
 
-import { ChangeDetectionStrategy, Component, ElementRef, inject, signal, viewChild } from "@angular/core";
-import { UiService } from "../../core";
+import { ChangeDetectionStrategy, Component, ElementRef, inject, viewChild } from "@angular/core";
+import { UiService } from "../../core/ui/ui.service";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { tap } from "rxjs";
 import { CommonModule } from "@angular/common";
