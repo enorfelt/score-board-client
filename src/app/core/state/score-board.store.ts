@@ -59,6 +59,13 @@ export class ScoreBoardStore {
     }));
   }
 
+  reset() {
+    this.update(() => this.config.initialState);
+  }
+
+  forceUpdate() {
+    this.update(() => this.state());
+  }
   private update(newState: (state: ScoreBoardState) => Partial<ScoreBoardState>) {
     const currentState = this.state();
     this.service

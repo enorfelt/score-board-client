@@ -91,7 +91,7 @@ describe('ScoreBoardStore', () => {
       store.removeInning();
       expect(store.state().inning).toEqual(1);
     });
-  
+
     it('should not have less then one inning', () => {
       const { store } = createStore();
       store.removeInning();
@@ -148,6 +148,18 @@ describe('ScoreBoardStore', () => {
       scoreFn(store);
       expect(currentScoreFn(store)).toEqual(99);
     });
+  });
+
+  it('should reset state', () => {
+    const { store } = createStore();
+    store.reset();
+    expect(store.state()).toEqual(initialState);
+  });
+
+  it('should force update', async () => {
+    const { store, service } = createStore();
+    store.forceUpdate();
+    expect(service.update).toHaveBeenCalledWith(store.state());
   });
 
   const createStore = (partialState?: Partial<ScoreBoardState>) => {
