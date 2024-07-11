@@ -8,11 +8,22 @@ import { SegmentDisplayComponent } from './components/segment-display/segment-di
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ScoreBoardStore } from './core/state/score-board.store';
 import { StatusComponent } from './components/status/status.component';
+import { ActionsComponent } from './components/actions/actions.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SectionComponent, SegmentDisplayComponent, AddRemoveButtonsComponent, SpinnerComponent, ErrorDialogComponent, StatusComponent],
+  imports: [
+    CommonModule, 
+    RouterOutlet, 
+    SectionComponent, 
+    SegmentDisplayComponent, 
+    AddRemoveButtonsComponent, 
+    SpinnerComponent, 
+    ErrorDialogComponent, 
+    StatusComponent,
+    ActionsComponent
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

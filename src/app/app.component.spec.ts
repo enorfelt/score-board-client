@@ -7,6 +7,8 @@ import { ScoreBoardState } from './core/state/score-board.types';
 import { signal } from '@angular/core';
 import { ScoreBoardStore } from './core/state/score-board.store';
 import { defaultState } from './core/config/app-config.service';
+import { ScoreBoardService } from './core/state/score-board.service';
+import { of } from 'rxjs';
 
 describe('AppComponent', () => {
     it('should contain home', async () => {
@@ -180,6 +182,14 @@ describe('AppComponent', () => {
                 {
                     provide: ScoreBoardStore,
                     useValue: store
+                },
+                {
+                    provide: ScoreBoardService,
+                    useValue: {
+                        update: jest.fn(),
+                        load: jest.fn(),
+                        status: jest.fn().mockReturnValue(of({ isReady: true }))
+                    } 
                 }
             ]
         });
