@@ -1,3 +1,8 @@
-<div class="actions">
-
+<div class="actions" role="button" (click)="toggleMenu()" aria-label="actions">
+  @if (showMenu()) {
+    <ul class="menu" role="menu" (clickOutside)="closeMenu()">
+      <li class="menu-item" role="menuitem" (click)="reset()">Reset</li>
+      <li class="menu-item" role="menuitem" (click)="forceUpdate()">Force Update</li>
+    </ul>
+  }
 </div>
