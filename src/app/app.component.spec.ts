@@ -228,7 +228,7 @@ describe('AppComponent', () => {
 class FakeScoreBoardStore {
 
     state = signal<ScoreBoardState>(this.initialState);
-
+    isReady = signal(true);
     constructor(private initialState: ScoreBoardState) {
     }
     homeScores() {
@@ -259,4 +259,6 @@ class FakeScoreBoardStore {
     removeOut() {
         this.state.update(s => ({ ...s, outsInInning: s.outsInInning - 1 }));
     }
+
+    checkStatus() {}
 }

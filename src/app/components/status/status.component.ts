@@ -1,9 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, computed, inject } from '@angular/core';
-import { ScoreBoardService } from '../../core/state/score-board.service';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
-import { map, startWith, switchMap } from 'rxjs';
-import { ScoreBoardStore } from 'src/app/core/state/score-board.store';
+import { ScoreBoardStore } from '../../core/state/score-board.store';
 
 @Component({
   selector: 'app-status',

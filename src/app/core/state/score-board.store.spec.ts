@@ -159,15 +159,34 @@ describe('ScoreBoardStore', () => {
   it('should check status', async () => {
     const { store, service } = createStore();
     store.checkStatus();
-    expect(store.isReady()).toBeTruthy(); 
+    expect(store.isReady()).toBeTruthy();
     expect(service.status).toHaveBeenCalledTimes(1);
   });
 
   it('should check status', async () => {
     const { store, service } = createStore();
     store.start();
-    expect(store.isReady()).toBeTruthy(); 
+    expect(store.isReady()).toBeTruthy();
     expect(service.start).toHaveBeenCalledTimes(1);
+  });
+
+  it('should debounce updates with 250ms', async () => {
+    jest.useFakeTimers();
+    const { store, service } = createStore();
+    store.addOut();
+    store.addOut();
+    store.addOut();
+    store.addOut();
+    store.addOut();
+
+
+    jest.advanceTimersByTime(250);
+
+    const expectedState = { ...store.state(), outsInInning: 5 };
+
+    store.addOut();
+
+    expect(service.update).toHaveBeenNthCalledWith(1, expectedState);
   });
 
   const createStore = (partialState?: Partial<ScoreBoardState>) => {

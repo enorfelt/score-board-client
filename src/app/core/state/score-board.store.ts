@@ -3,6 +3,7 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ScoreBoardState } from "./score-board.types";
 import { ScoreBoardService } from "./score-board.service";
 import { AppConfigService, defaultState } from "../config/app-config.service";
+import { Subject, debounceTime, switchMap } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,21 @@ export class ScoreBoardStore {
   private config = inject(AppConfigService);
   private destroyRef = inject(DestroyRef);
 
+  private debouncedUpdate$ = new Subject<ScoreBoardState>();
+
   private readonly writableState = signal<ScoreBoardState>(this.config.initialState);
   readonly state = this.writableState.asReadonly();
 
   isReady = signal(false);
+
+  constructor() {
+    this.debouncedUpdate$
+      .pipe(
+        debounceTime(250),
+        switchMap(s => this.service.update(s)),
+        takeUntilDestroyed(),
+      ).subscribe(s => this.writableState.set(s));
+  }
 
   homeScores() {
     this.update(s => ({ home: Math.min(99, s.home + 1) }));
@@ -66,7 +78,9 @@ export class ScoreBoardStore {
   }
 
   forceUpdate() {
-    this.update(() => this.state());
+    this.service.update(this.state()).pipe(
+      takeUntilDestroyed(this.destroyRef),
+    ).subscribe(s => this.writableState.set(s));
   }
 
   checkStatus() {
@@ -83,12 +97,9 @@ export class ScoreBoardStore {
 
   private update(newState: (state: ScoreBoardState) => Partial<ScoreBoardState>) {
     const currentState = this.state();
-    this.service
-      .update({ ...currentState, ...newState(currentState) })
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe(s => this.writableState.set(s));
+    const featureState = { ...currentState, ...newState(currentState) };
+    this.writableState.set(featureState);
+    this.debouncedUpdate$.next(featureState);
   }
 
 }
