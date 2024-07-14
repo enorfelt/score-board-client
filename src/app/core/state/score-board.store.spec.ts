@@ -26,9 +26,9 @@ describe('ScoreBoardStore', () => {
     });
 
     it('should max out on 99 innings', () => {
-      const { store } = createStore({ outsInInning: 5, inning: 99 });
+      const { store } = createStore({ outsInInning: 5, inning: 9 });
       store.addOut();
-      expect(store.state().inning).toEqual(99);
+      expect(store.state().inning).toEqual(9);
     });
   });
 
@@ -66,22 +66,16 @@ describe('ScoreBoardStore', () => {
       expect(store.state().inning).toEqual(2);
     });
 
-    it('should max out on 99 innings', () => {
-      const { store } = createStore({ inning: 99 });
+    it('should max out on 9 innings', () => {
+      const { store } = createStore({ inning: 9 });
       store.addInning();
-      expect(store.state().inning).toEqual(99);
+      expect(store.state().inning).toEqual(9);
     });
 
     it('should zero outs on new inning', () => {
       const { store } = createStore({ outsInInning: 5 });
       store.addInning();
       expect(store.state().outsInInning).toEqual(0);
-    });
-
-    it('should not clear out on maxed innings', () => {
-      const { store } = createStore({ inning: 99, outsInInning: 2 });
-      store.addInning();
-      expect(store.state().outsInInning).toEqual(2);
     });
   });
 
@@ -204,4 +198,4 @@ describe('ScoreBoardStore', () => {
     });
     return { store: TestBed.inject(ScoreBoardStore), service: scoreBoardServiceMock };
   };
-});
+}); 

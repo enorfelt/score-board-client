@@ -36,7 +36,7 @@ export class ScoreBoardStore {
   addOut() {
     this.update(s => ({
       outsInInning: s.outsInInning < 5 ? s.outsInInning + 1 : 0,
-      inning: s.outsInInning === 5 ? Math.min(99, s.inning + 1) : s.inning
+      inning: s.outsInInning === 5 ? Math.min(9, s.inning + 1) : s.inning
     }));
   }
 
@@ -49,8 +49,8 @@ export class ScoreBoardStore {
 
   addInning() {
     this.update(s => ({
-      inning: Math.min(99, s.inning + 1),
-      outsInInning: s.inning < 99 ? 0 : s.outsInInning,
+      inning: Math.min(9, s.inning + 1),
+      outsInInning: 0,
     }));
   }
 
