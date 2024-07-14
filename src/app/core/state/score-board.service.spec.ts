@@ -51,6 +51,20 @@ describe('ScoreBoardService', () => {
 
     expect(spy.getValues()).toEqual([{ isReady: true }]);
   });
+
+  it('should call start endpoint', () => {
+    const { service, http } = createService();
+
+    const spy = subscribeSpyTo(service.start());
+
+    const req = http.expectOne('/api/score-board/start');
+    expect(req.request.method).toBe('GET');
+
+    req.flush({ isReady: true });
+
+    expect(spy.getValues()).toEqual([{ isReady: true }]);
+  });
+
   const createService = () => {
     TestBed.configureTestingModule({
       providers: [

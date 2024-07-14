@@ -54,12 +54,22 @@ describe('ActionsComponent', () => {
     expect(store.forceUpdate).toHaveBeenCalledTimes(1);
   });
 
+  it('should call reconnect when clicked', async () => {
+    const { clickReconnect, store, toggleMenu } = await renderComponent();
+
+    await toggleMenu();
+    await clickReconnect();
+
+    expect(store.start).toHaveBeenCalledTimes(1);
+  });
+
   const renderComponent = async () => {
     const user = userEvent.setup();
 
     const scoreBoardStoreMock = {
       reset: jest.fn(),
-      forceUpdate: jest.fn()
+      forceUpdate: jest.fn(),
+      start: jest.fn()
     };
 
     const { fixture, debug } = await render(ActionsComponent, {
@@ -77,8 +87,9 @@ describe('ActionsComponent', () => {
       menu: () => screen.queryByRole('menu'),
       toggleMenu: () => user.click(screen.getByRole('button', { name: /actions/i })),
       clickBody: () => user.click(document.body),
-      clickReset: () => user.click(screen.getByRole('menuitem', { name: /reset/i })),
+      clickReset: () => user.click(screen.getByRole('menuitem', { name: /reset score/i })),
       clickForceUpdate: () => user.click(screen.getByRole('menuitem', { name: /force update/i })),
+      clickReconnect: () => user.click(screen.getByRole('menuitem', { name: /reconnect to board/i })),
     }
   }
 }); 

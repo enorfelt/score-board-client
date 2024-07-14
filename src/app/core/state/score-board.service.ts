@@ -20,4 +20,8 @@ export class ScoreBoardService {
   status(): Observable<ScoreBoardStatus> {
     return this.http.get<ScoreBoardStatus>('/api/score-board/status');
   }
+
+  start(): Observable<ScoreBoardStatus> {
+    return this.http.get<ScoreBoardStatus>('/api/score-board/start');
+  }
 }

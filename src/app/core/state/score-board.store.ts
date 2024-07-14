@@ -2,7 +2,7 @@ import { Injectable, signal, inject, DestroyRef } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ScoreBoardState } from "./score-board.types";
 import { ScoreBoardService } from "./score-board.service";
-import { AppConfigService } from "../config/app-config.service";
+import { AppConfigService, defaultState } from "../config/app-config.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,8 @@ export class ScoreBoardStore {
 
   private readonly writableState = signal<ScoreBoardState>(this.config.initialState);
   readonly state = this.writableState.asReadonly();
+
+  isReady = signal(false);
 
   homeScores() {
     this.update(s => ({ home: Math.min(99, s.home + 1) }));
@@ -60,12 +62,25 @@ export class ScoreBoardStore {
   }
 
   reset() {
-    this.update(() => this.config.initialState);
+    this.update(() => defaultState);
   }
 
   forceUpdate() {
     this.update(() => this.state());
   }
+
+  checkStatus() {
+    this.service.status().pipe(
+      takeUntilDestroyed(this.destroyRef),
+    ).subscribe(s => this.isReady.set(s.isReady));
+  }
+
+  start() {
+    this.service.start().pipe(
+      takeUntilDestroyed(this.destroyRef),
+    ).subscribe(s => this.isReady.set(s.isReady));
+  }
+
   private update(newState: (state: ScoreBoardState) => Partial<ScoreBoardState>) {
     const currentState = this.state();
     this.service

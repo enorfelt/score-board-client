@@ -29,4 +29,8 @@ export class ActionsComponent {
   forceUpdate() {
     this.store.forceUpdate();
   }
+
+  reconnect() { 
+    this.store.start();
+  }
 }

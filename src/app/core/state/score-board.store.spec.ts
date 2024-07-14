@@ -162,11 +162,27 @@ describe('ScoreBoardStore', () => {
     expect(service.update).toHaveBeenCalledWith(store.state());
   });
 
+  it('should check status', async () => {
+    const { store, service } = createStore();
+    store.checkStatus();
+    expect(store.isReady()).toBeTruthy(); 
+    expect(service.status).toHaveBeenCalledTimes(1);
+  });
+
+  it('should check status', async () => {
+    const { store, service } = createStore();
+    store.start();
+    expect(store.isReady()).toBeTruthy(); 
+    expect(service.start).toHaveBeenCalledTimes(1);
+  });
+
   const createStore = (partialState?: Partial<ScoreBoardState>) => {
     const state = { ...initialState, ...partialState };
     const scoreBoardServiceMock = {
       load: jest.fn().mockImplementation(() => of(state)),
-      update: jest.fn().mockImplementation(state => of(state))
+      update: jest.fn().mockImplementation(state => of(state)),
+      status: jest.fn().mockImplementation(() => of({ isReady: true })),
+      start: jest.fn().mockImplementation(() => of({ isReady: true }))
     };
 
     const appConfigServiceMock = {

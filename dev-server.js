@@ -31,6 +31,10 @@ app.get('/api/score-board/status', (req, res) => {
   res.json({ "isReady": true });
 });
 
+app.get('/api/score-board/start', (req, res) => {
+  res.json({ "isReady": true });
+});
+
 app.post('/api/score-board/update', async (req, res) => {
   await sleep(getRandomInt(20, 500));
   state = req.body.payload;
