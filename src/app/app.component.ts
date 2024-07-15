@@ -35,6 +35,8 @@ export class AppComponent {
   awayScoreSig = computed(() => this.store.state().away);
   inningsSig = computed(() => this.store.state().inning);
 
+  isBottom = computed(() => this.store.state().outsInInning >= 3);
+
   firstOutSig = computed(() => {
     const state = this.store.state();
     return (state.outsInInning > 0 && state.outsInInning < 3) || (state.outsInInning > 3);

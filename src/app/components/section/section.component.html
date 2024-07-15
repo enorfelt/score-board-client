@@ -1,5 +1,9 @@
 <div class="section-container">
-  <h1 class="section-label">{{ title() }}</h1>
+  <div class="section-header">
+  <ng-content select="[title]">
+    <h1 class="section-label">{{ title() }}</h1>
+  </ng-content>
+  </div> 
   <div class="section-border">
     <ng-content></ng-content>
   </div>

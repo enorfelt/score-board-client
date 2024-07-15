@@ -92,3 +92,28 @@
     padding: 10px 0 10px 0;
   }
 }
+
+.inning-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.triangle-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid var(--light-color);
+
+  &.bottom {
+    border-top: 20px solid var(--light-color);
+    border-bottom: none;
+  }
+}
