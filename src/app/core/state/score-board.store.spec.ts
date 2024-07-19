@@ -2,7 +2,7 @@ import { TestBed } from "@angular/core/testing";
 import { ScoreBoardState } from "./score-board.types";
 import { ScoreBoardStore } from "./score-board.store";
 import { ScoreBoardService } from "./score-board.service";
-import { of } from "rxjs";
+import { of, throwError } from "rxjs";
 import { AppConfigService, defaultState } from "../config/app-config.service";
 
 describe('ScoreBoardStore', () => {
@@ -187,6 +187,19 @@ describe('ScoreBoardStore', () => {
     store.addOut();
 
     expect(service.update).toHaveBeenNthCalledWith(1, expectedState);
+  });
+
+  it('should restore previous state if update error', async () => {
+    jest.useFakeTimers();
+    const { store, service } = createStore();
+
+    service.update = jest.fn().mockImplementation(() => throwError(() => new Error('Some error')));
+
+    store.addOut();
+
+    jest.advanceTimersByTime(250);
+
+    expect(store.state().outsInInning).toEqual(0);
   });
 
   const createStore = (partialState?: Partial<ScoreBoardState>) => {

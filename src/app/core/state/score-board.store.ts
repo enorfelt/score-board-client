@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ScoreBoardState } from "./score-board.types";
 import { ScoreBoardService } from "./score-board.service";
 import { AppConfigService, defaultState } from "../config/app-config.service";
-import { Subject, debounceTime, switchMap } from "rxjs";
+import { Subject, catchError, debounceTime, of, switchMap } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ScoreBoardStore {
   private config = inject(AppConfigService);
   private destroyRef = inject(DestroyRef);
 
-  private debouncedUpdate$ = new Subject<ScoreBoardState>();
+  private debouncedUpdate$ = new Subject<{ state: ScoreBoardState; next: ScoreBoardState; }>();
 
   private readonly writableState = signal<ScoreBoardState>(this.config.initialState);
   readonly state = this.writableState.asReadonly();
@@ -24,7 +24,9 @@ export class ScoreBoardStore {
     this.debouncedUpdate$
       .pipe(
         debounceTime(250),
-        switchMap(s => this.service.update(s)),
+        switchMap(s => this.service.update(s.next).pipe(
+          catchError(_ => of(s.state))
+        )),
         takeUntilDestroyed(),
       ).subscribe(s => this.writableState.set(s));
   }
@@ -99,7 +101,7 @@ export class ScoreBoardStore {
     const currentState = this.state();
     const featureState = { ...currentState, ...newState(currentState) };
     this.writableState.set(featureState);
-    this.debouncedUpdate$.next(featureState);
+    this.debouncedUpdate$.next({ state: currentState, next: featureState });
   }
 
 }
