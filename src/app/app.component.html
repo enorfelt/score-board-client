@@ -5,45 +5,66 @@
   <div class="pure-g">
     <app-section class="pure-u-1 pure-u-sm-1-3" title="Home">
       <app-segment-display [value]="homeScoreSig()"></app-segment-display>
-      <app-add-remove-buttons (valueAdded)="homeScoreIncreased()"
-        (valueRemoved)="homeScoreDecreased()"></app-add-remove-buttons>
+      <app-add-remove-buttons
+        (valueAdded)="homeScoreIncreased()"
+        (valueRemoved)="homeScoreDecreased()"
+      ></app-add-remove-buttons>
     </app-section>
     <div class="pure-u-1 pure-u-sm-1-3">
-      <app-section>
+      <app-section title="Inning">
         <div title class="inning-header">
           <h1>Inning</h1>
           <div class="triangle-container">
-            <span class="triangle" [ngClass]="{'bottom': isBottom()}"></span>
+            <span class="triangle" [ngClass]="{ bottom: isBottom() }"></span>
           </div>
         </div>
         <app-segment-display [value]="inningsSig()"></app-segment-display>
-        <app-add-remove-buttons (valueAdded)="inningIncreased()"
-          (valueRemoved)="inningDecreased()"></app-add-remove-buttons>
+        <app-add-remove-buttons
+          (valueAdded)="inningIncreased()"
+          (valueRemoved)="inningDecreased()"
+        ></app-add-remove-buttons>
       </app-section>
       <app-section title="Outs" class="outs">
         <div class="pure-g">
           <div class="pure-u-1 check-wrapper">
             <label class="check-container">
-              <input type="checkbox" id="out1" name="out1" disabled [checked]="firstOutSig()" />
+              <input
+                type="checkbox"
+                id="out1"
+                name="out1"
+                disabled
+                [checked]="firstOutSig()"
+              />
               <span class="checkmark"></span>
             </label>
             <label class="check-container">
-              <input type="checkbox" id="out2" name="out2" disabled [checked]="secondOutSig()" />
+              <input
+                type="checkbox"
+                id="out2"
+                name="out2"
+                disabled
+                [checked]="secondOutSig()"
+              />
               <span class="checkmark"></span>
             </label>
           </div>
           <div class="pure-u-1">
-            <app-add-remove-buttons (valueAdded)="outIncreased()"
-              (valueRemoved)="outDecreased()"></app-add-remove-buttons>
+            <app-add-remove-buttons
+              (valueAdded)="outIncreased()"
+              (valueRemoved)="outDecreased()"
+            ></app-add-remove-buttons>
           </div>
         </div>
       </app-section>
     </div>
     <app-section class="pure-u-1 pure-u-sm-1-3" title="Away">
       <app-segment-display [value]="awayScoreSig()"></app-segment-display>
-      <app-add-remove-buttons (valueAdded)="awayScoreIncreased()"
-        (valueRemoved)="awayScoreDecreased()"></app-add-remove-buttons>
+      <app-add-remove-buttons
+        (valueAdded)="awayScoreIncreased()"
+        (valueRemoved)="awayScoreDecreased()"
+      ></app-add-remove-buttons>
     </app-section>
     <app-actions></app-actions>
   </div>
 </div>
+
