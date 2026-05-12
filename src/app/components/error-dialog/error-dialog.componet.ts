@@ -3,14 +3,14 @@ import { ChangeDetectionStrategy, Component, ElementRef, inject, viewChild } fro
 import { UiService } from "../../core/ui/ui.service";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { tap } from "rxjs";
-import { CommonModule } from "@angular/common";
+
 
 @Component({
     selector: "app-error-dialog",
     templateUrl: "./error-dialog.component.html",
     styleUrls: ["./error-dialog.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [CommonModule]
+    imports: []
 })
 export class ErrorDialogComponent {
   private uiService = inject(UiService);
