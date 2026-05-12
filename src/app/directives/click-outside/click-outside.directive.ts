@@ -1,16 +1,16 @@
 import { Directive, ElementRef, HostListener, output } from "@angular/core";
 
 @Directive({
-  selector: '[clickOutside]',
-  standalone: true
+  selector: "[clickOutside]",
+  standalone: true,
 })
 export class ClickOutsideDirective {
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef) {}
 
   public clickOutside = output<MouseEvent>();
 
-  @HostListener('document:click', ['$event', '$event.target'])
-  public onClick(event: MouseEvent, targetElement: HTMLElement): void {
+  @HostListener("document:click", ["$event", "$event.target"])
+  public onClick(event: MouseEvent, targetElement: EventTarget | null): void {
     if (!targetElement) {
       return;
     }
@@ -21,3 +21,4 @@ export class ClickOutsideDirective {
     }
   }
 }
+
