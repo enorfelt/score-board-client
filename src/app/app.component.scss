@@ -1,119 +1,90 @@
 .container {
   position: relative;
-  max-width: 920px;
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 430px;
-  border-radius: 5px;
-  background-color: var(--primary-color);
-  border: 5px solid rgba(0, 0, 0, 0.56);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: 8px;
+  background: linear-gradient(180deg, var(--primary-color) 0%, var(--primary-color-dark) 100%);
+  border: 4px solid rgba(0, 0, 0, 0.55);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  padding: 16px;
+
+  @media screen and (min-width: 920px) {
+    margin-top: 8px;
+  }
 }
 
-@media screen and (min-width: 920px) {
-  .container {
-    margin-top: 5px;
+.scoreboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.middle-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inning-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.inning-half {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--segment-color);
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.3);
+
+  &.bottom {
+    color: var(--light-color);
   }
 }
 
 .check-wrapper {
   display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-bottom: 5px;
+  justify-content: center;
+  gap: 20px;
+  padding: 8px 0;
+  margin-bottom: 4px;
 }
 
 .check-container {
-  flex-basis: 50%;
   position: relative;
-  height: 35px;
-  max-width: 35px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 
   input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
-    height: 0;
     width: 0;
+    height: 0;
 
-    &:checked~.checkmark {
-      background-color: #000;
-
-      &:after {
-        display: block;
-      }
+    &:checked ~ .checkmark {
+      background-color: var(--segment-color);
+      box-shadow: 0 0 8px var(--segment-color),
+                  0 0 18px rgba(255, 196, 0, 0.35);
+      border-color: var(--segment-color);
     }
   }
 
   .checkmark {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 35px;
-    width: 35px;
-    background-color: #000;
-    border-radius: 5px;
-
-    &:after {
-      content: "";
-      position: absolute;
-      display: none;
-      left: 5px;
-      top: 5px;
-      width: 25px;
-      height: 25px;
-      border-radius: 5px;
-      background-color: var(--segment-color);
-    }
-  }
-
-  &:hover input~.checkmark {
-    background-color: #000;
-  }
-}
-
-.outs {
-  .inputs {
-    border: 3px solid #fff;
-    border-radius: 24px;
-    justify-content: space-evenly;
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    padding: 10px 0 10px 0;
-  }
-}
-
-.inning-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-.triangle-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.triangle {
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 20px solid var(--light-color);
-
-  &.bottom {
-    border-top: 20px solid var(--light-color);
-    border-bottom: none;
+    inset: 0;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.55);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    transition: background-color 0.15s, box-shadow 0.15s;
   }
 }

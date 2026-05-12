@@ -6,21 +6,25 @@
   --primary-color-dark: hsla(0, 100%, 18%, 1);
 
   --light-color: hsla(0, 0%, 85%, 1);
-  --bg-color: hsla(0, 0%, 100%, 1);
-  --bg-color-dark: hsla(0, 0%, 70%, 1);
+  --section-bg: rgba(0, 0, 0, 0.38);
+  --section-border: rgba(255, 255, 255, 0.12);
 
   --segment-color: #ffc400;
+  --segment-dim: rgba(255, 196, 0, 0.13);
+
+  --btn-bg: hsla(0, 100%, 18%, 1);
+  --btn-hover: hsla(0, 100%, 26%, 1);
 
   --status-ready-color: hsla(120, 100%, 40%, 1);
   --status-not-ready-color: hsla(0, 100%, 70%, 1);
 }
 
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
 
 body {
-  background-color: var(--primary-color-dark);
+  background-color: #111;
   color: var(--light-color);
 }
 

@@ -48,8 +48,7 @@
               "base": "dist/score-board-client"
             },
             "index": "src/index.html",
-            "polyfills": [
-            ],
+            "polyfills": [],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -63,8 +62,6 @@
             ],
             "styles": [
               "src/normalize.css",
-              "purecss/build/pure-min.css",
-              "purecss/build/grids-responsive-min.css",
               "src/styles.scss"
             ],
             "scripts": [],

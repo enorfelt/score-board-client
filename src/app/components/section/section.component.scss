@@ -1,18 +1,30 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
 .section-container {
-  max-width: 170px;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .section-header {
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
-  padding: 5px;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  padding: 4px 5px 6px;
+  opacity: 0.75;
 }
 
 .section-border {
-  border: 3px solid var(--light-color);
-  border-radius: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--section-bg);
+  border: 1px solid var(--section-border);
+  border-radius: 8px;
   padding: 10px;
 }

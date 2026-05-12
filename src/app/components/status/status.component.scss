@@ -1,15 +1,28 @@
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 6px var(--status-ready-color),
+                0 0 12px var(--status-ready-color);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--status-ready-color),
+                0 0 22px var(--status-ready-color),
+                0 0 36px var(--status-ready-color);
+  }
+}
+
 .status-indicator {
   position: absolute;
-  width: 15px;
-  height: 15px;
-  top: 10px;
-  right: 10px;
+  width: 14px;
+  height: 14px;
+  top: 12px;
+  right: 12px;
   border-radius: 50%;
   background-color: var(--status-not-ready-color);
-  box-shadow: 0 0 10px var(--status-not-ready-color), 0 0 20px var(--status-not-ready-color), 0 0 30px var(--status-not-ready-color), 0 0 40px var(--status-not-ready-color);
+  box-shadow: 0 0 8px var(--status-not-ready-color),
+              0 0 16px var(--status-not-ready-color);
 
   &.ready {
     background-color: var(--status-ready-color);
-    box-shadow: 0 0 10px var(--status-ready-color), 0 0 20px var(--status-ready-color), 0 0 30px var(--status-ready-color), 0 0 40px var(--status-ready-color);
+    animation: pulse 2.5s ease-in-out infinite;
   }
 }

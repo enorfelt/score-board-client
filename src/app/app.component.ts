@@ -40,6 +40,7 @@ export class AppComponent {
   inningsSig = computed(() => this.store.state().inning);
 
   isBottom = computed(() => this.store.state().outsInInning >= 3);
+  inningHalf = computed(() => this.store.state().outsInInning >= 3 ? 'BOT' : 'TOP');
 
   firstOutSig = computed(() => {
     const state = this.store.state();
