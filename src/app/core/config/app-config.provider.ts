@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, inject } from "@angular/core";
+import { inject, provideAppInitializer } from "@angular/core";
 import { AppConfigService } from "./app-config.service";
 
 function initializeAppConfig(): () => void {
@@ -6,9 +6,7 @@ function initializeAppConfig(): () => void {
   return () => service.init();
 }
 
-export const provideAppConfig = () => ({
-  provide: APP_INITIALIZER,
-  useFactory: initializeAppConfig,
-  deps: [],
-  multi: true
-});
+export const provideAppConfig = () => (provideAppInitializer(() => {
+        const initializerFn = (initializeAppConfig)();
+        return initializerFn();
+      }));

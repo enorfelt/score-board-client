@@ -3,12 +3,11 @@ import { ClickOutsideDirective } from "../../directives/click-outside/click-outs
 import { ScoreBoardStore } from "../../core/state/score-board.store";
 
 @Component({
-  selector: 'app-actions',
-  templateUrl: './actions.component.html',
-  styleUrls: ['./actions.component.scss'],
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ClickOutsideDirective]
+    selector: 'app-actions',
+    templateUrl: './actions.component.html',
+    styleUrls: ['./actions.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [ClickOutsideDirective]
 })
 export class ActionsComponent {
   private store = inject(ScoreBoardStore);

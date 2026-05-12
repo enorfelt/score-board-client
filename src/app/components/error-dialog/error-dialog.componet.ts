@@ -6,12 +6,11 @@ import { tap } from "rxjs";
 import { CommonModule } from "@angular/common";
 
 @Component({
-  selector: "app-error-dialog",
-  templateUrl: "./error-dialog.component.html",
-  styleUrls: ["./error-dialog.component.scss"],
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule]
+    selector: "app-error-dialog",
+    templateUrl: "./error-dialog.component.html",
+    styleUrls: ["./error-dialog.component.scss"],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule]
 })
 export class ErrorDialogComponent {
   private uiService = inject(UiService);

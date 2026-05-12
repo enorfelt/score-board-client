@@ -11,22 +11,21 @@ import { StatusComponent } from './components/status/status.component';
 import { ActionsComponent } from './components/actions/actions.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    CommonModule, 
-    RouterOutlet, 
-    SectionComponent, 
-    SegmentDisplayComponent, 
-    AddRemoveButtonsComponent, 
-    SpinnerComponent, 
-    ErrorDialogComponent, 
-    StatusComponent,
-    ActionsComponent
-  ],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-root',
+    imports: [
+        CommonModule,
+        RouterOutlet,
+        SectionComponent,
+        SegmentDisplayComponent,
+        AddRemoveButtonsComponent,
+        SpinnerComponent,
+        ErrorDialogComponent,
+        StatusComponent,
+        ActionsComponent
+    ],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   private store = inject(ScoreBoardStore);
