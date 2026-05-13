@@ -3,10 +3,8 @@ import {
   Component,
   computed,
   inject,
-  signal,
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { RouterOutlet } from "@angular/router";
 import { SectionComponent } from "./components/section/section.component";
 import { ErrorDialogComponent } from "./components/error-dialog/error-dialog.componet";
 import { AddRemoveButtonsComponent } from "./components/inc-dec-buttons/inc-dec-buttons.component";

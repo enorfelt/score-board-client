@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, model, output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, model } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 
 @Component({
