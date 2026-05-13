@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, model } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, model } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 
 @Component({
@@ -10,4 +10,7 @@ import { FormsModule } from "@angular/forms";
 })
 export class SegmentDisplayComponent {
   value = model<number>(0);
+
+  protected ghost = computed(() => '8'.repeat(String(this.value()).length));
+  protected displayValue = computed(() => String(this.value()));
 }

@@ -12,30 +12,34 @@
   min-height: 80px;
   display: flex;
   align-items: center;
-  background: #000;
+  background: #0a0700;
   border-radius: 6px;
   box-shadow: 0 0 14px rgba(255, 196, 0, 0.22), 0 0 4px rgba(255, 196, 0, 0.12);
   overflow: hidden;
   container-type: size;
 
   &::before {
-    content: "88";
-    font-family: 'DSEG7-Classic';
-    color: var(--segment-dim);
-    font-size: clamp(2rem, 60cqh, 14rem);
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
+    content: none;
   }
+}
+
+.segment-bg {
+  font-family: 'DSEG7-Classic';
+  color: var(--segment-dim);
+  font-size: clamp(2rem, 60cqh, 14rem);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
 }
 
 .segment-display {
   position: relative;
   z-index: 1;
   background: transparent;
+  text-shadow: 0 0 8px var(--segment-color), 0 0 20px rgba(255, 196, 0, 0.5);
   font-family: 'DSEG7-Classic';
   color: var(--segment-color);
   font-size: clamp(2rem, 60cqh, 14rem);

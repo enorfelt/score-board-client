@@ -1,3 +1,4 @@
 <div class="display-wrapper">
-  <input class="segment-display" type="text" [(ngModel)]="value" disabled />
+  <span class="segment-bg" aria-hidden="true">{{ ghost() }}</span>
+  <input class="segment-display" type="text" [ngModel]="displayValue()" disabled />
 </div>
